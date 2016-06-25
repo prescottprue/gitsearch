@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Navbar.scss'
+import styles from './Navbar.scss'
 import { Link } from 'react-router'
 import { AppBar } from 'material-ui'
 
@@ -8,7 +8,7 @@ export default class Navbar extends Component {
     return (
       <AppBar
         title={<Link className='Navbar-Brand' to='/'>gitsearch</Link>}
-        className='Navbar'
+        className={styles.navbar}
         showMenuIconButton={false}
       />
     )
