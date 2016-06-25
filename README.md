@@ -1,17 +1,13 @@
 # Gitsearch
 
-[![NPM version][npm-image]][npm-url]
-[![NPM downloads][npm-downloads-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
-[![Code Climate][climate-image]][climate-url]
-[![Code Coverage][coverage-image]][coverage-url]
 [![License][license-image]][license-url]
 [![Code Style][code-style-image]][code-style-url]
 
 > Basic Github search app
 
-## Features
+## Libraries
 * [react](https://github.com/facebook/react)
 * [redux](https://github.com/rackt/redux)
 * [react-router](https://github.com/rackt/react-router)
@@ -123,17 +119,10 @@ import SomeComponent from 'components/SomeComponent' // Hooray!
 Both `.scss` and `.css` file extensions are supported out of the box and are configured to use [CSS Modules](https://github.com/css-modules/css-modules). After being imported, styles will be processed with [PostCSS](https://github.com/postcss/postcss) for minification and autoprefixing, and will be extracted to a `.css` file during production builds.
 
 
-[npm-image]: https://img.shields.io/npm/v/gitsearch.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/gitsearch
-[npm-downloads-image]: https://img.shields.io/npm/dm/gitsearch.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/prescottprue/gitsearch/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/prescottprue/gitsearch
 [daviddm-image]: https://img.shields.io/david/prescottprue/gitsearch.svg?style=flat-square
 [daviddm-url]: https://david-dm.org/prescottprue/gitsearch
-[climate-image]: https://img.shields.io/codeclimate/github/prescottprue/gitsearch.svg?style=flat-square
-[climate-url]: https://codeclimate.com/github/prescottprue/gitsearch
-[coverage-image]: https://img.shields.io/codeclimate/coverage/github/prescottprue/gitsearch.svg?style=flat-square
-[coverage-url]: https://codeclimate.com/github/prescottprue/gitsearch
 [license-image]: https://img.shields.io/npm/l/gitsearch.svg?style=flat-square
 [license-url]: https://github.com/prescottprue/gitsearch/blob/master/LICENSE
 [code-style-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
