@@ -14,7 +14,7 @@ class Home extends Component {
 
   loadUser = (username) => {
     // console.log('load user called:', username)
-    this.props.getUser(username)
+    this.props.getUsers(username)
   }
 
   render () {

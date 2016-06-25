@@ -17,7 +17,13 @@ export function getRepos (account) {
     }
   }
 }
-
+export function getUsers (list) {
+  console.log('users list:', list)
+  const lineSplit = list.split('\n')
+  //TODO: Handle commas
+  // const commaSplit = list.split(',')
+  return (dispatch) => lineSplit.forEach(name => dispatch(getUser(name)))
+}
 export function getUser (username) {
   if (!username) {
     throw new Error('Username is required to get user data')

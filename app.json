@@ -1,0 +1,13 @@
+{
+  "name": "gitsearch",
+  "description": "Github search application",
+  "scripts": {},
+  "env": {},
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [],
+  "buildpacks": []
+}
