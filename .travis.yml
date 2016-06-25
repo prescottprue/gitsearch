@@ -1,0 +1,32 @@
+language: node_js
+
+node_js:
+- 6.2.0
+
+sudo: false
+
+branches:
+  only:
+    - master
+
+script:
+  - npm run lint
+  - npm run test
+  - NODE_ENV=development npm run deploy
+  - NODE_ENV=staging npm run deploy
+  - NODE_ENV=production npm run deploy
+
+
+install:
+  - npm install
+
+deploy:
+  skip_cleanup: true
+  provider: heroku
+  api_key:
+    secure: $HEROKU_KEY
+  app: $HEROKU_APP
+
+cache:
+  directories:
+    - node_modules
