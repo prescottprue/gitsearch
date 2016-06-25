@@ -4,17 +4,32 @@ import styles from './Home.scss'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Actions from '../../actions'
+import { find } from 'lodash'
 
 class Home extends Component {
   componentDidMount () {
-    this.props.getUser('prescottprue')
+    this.loadUser('prescottprue')
+  }
+  loadUser (username) {
+    this.props.getUser(username)
   }
   render () {
+    const { users } = this.props
+    console.log('users:', users)
     return (
       <div className={styles.container}>
         <h2>Welcome to gitsearch</h2>
-        <p>Example application built React and Firebase. </p>
-        <Link to='/cars'>Cars List Example</Link>
+        <p>Example search applicaiton </p>
+        {
+          users
+          ? (
+              <div>
+                Username: { users[0].login }<br/>
+                Email: { users[0].email }
+              </div>
+            )
+          : null
+        }
       </div>
     )
   }
@@ -23,6 +38,7 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   console.log('state:', state)
   return {
+    users: state.users.items,
     account: state.account,
     router: state.router
   }
