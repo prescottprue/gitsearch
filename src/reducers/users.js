@@ -25,7 +25,7 @@ export default function users (state = {
       }
       return Object.assign({}, state, {
         isFetching: false,
-        items: [action.payload],
+        items: state.items ? state.items.concat([action.payload]) : [action.payload],
         didInvalidate: false
       })
     default:

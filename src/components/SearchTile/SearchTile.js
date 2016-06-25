@@ -25,6 +25,11 @@ export class SearchTile extends Component {
     this.setState({ inputVal: e.target.value })
   }
 
+  handleSubmit = (inputVal) => {
+    console.log('inputVal')
+    this.props.onSubmit.bind(this, inputVal)
+  }
+
   render () {
     const { inputVal, users } = this.state
     return (
@@ -35,7 +40,6 @@ export class SearchTile extends Component {
             floatingLabelText="Enter Github username's"
             multiLine={true}
             onChange={this.handleUpdate}
-            onEnterKeyDown={this.props.onSubmit.bind(this, inputVal)}
           />
           <FlatButton label='Search' onClick={this.props.onSubmit.bind(this, inputVal)}/>
         </div>
