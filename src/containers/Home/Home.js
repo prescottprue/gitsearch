@@ -1,18 +1,22 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router'
+import React, { Component, PropTypes } from 'react'
 import styles from './Home.scss'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Actions from '../../actions'
-import { find } from 'lodash'
 
 class Home extends Component {
+  static propTypes = {
+    getUser: PropTypes.func,
+    users: PropTypes.array
+  }
   componentDidMount () {
     this.loadUser('prescottprue')
   }
+
   loadUser (username) {
     this.props.getUser(username)
   }
+
   render () {
     const { users } = this.props
     console.log('users:', users)
@@ -21,14 +25,14 @@ class Home extends Component {
         <h2>Welcome to gitsearch</h2>
         <p>Example search applicaiton </p>
         {
-          users
-          ? (
-              <div>
-                Username: { users[0].login }<br/>
-                Email: { users[0].email }
-              </div>
-            )
-          : null
+        users
+        ? (
+          <div>
+            Username: {users[0].login}<br />
+            Email: {users[0].email}
+          </div>
+          )
+        : null
         }
       </div>
     )

@@ -36,8 +36,6 @@ export function getUser (username) {
   }
 }
 
-
-
 //
 
 // {

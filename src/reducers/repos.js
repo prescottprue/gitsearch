@@ -12,17 +12,15 @@ export default function users (state = {
   switch (action.type) {
     case GET_REPOS_REQUEST:
       return Object.assign({}, state, {
-          isFetching: true,
-          didInvalidate: false
-        })
-      break
+        isFetching: true,
+        didInvalidate: false
+      })
     case GET_REPOS_FAILURE:
       console.error('error getting repos:', action)
       return Object.assign({}, state, {
-          isFetching: false,
-          error: action.payload
-        })
-      break
+        isFetching: false,
+        error: action.payload
+      })
     case GET_REPOS_SUCCESS:
       if (!action.payload || !action.payload.results) {
         console.error('No repos found')
@@ -33,8 +31,7 @@ export default function users (state = {
         items: toArray(action.payload.results),
         didInvalidate: false
       })
-    break
-  default:
-    return state
+    default:
+      return state
   }
 }
