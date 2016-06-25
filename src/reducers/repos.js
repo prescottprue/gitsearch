@@ -8,7 +8,6 @@ export default function users (state = {
   isFetching: false,
   items: []
 }, action) {
-  console.log('action:', action)
   switch (action.type) {
     case GET_REPOS_REQUEST:
       return Object.assign({}, state, {

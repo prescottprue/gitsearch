@@ -12,6 +12,9 @@ export class UsersTable extends Component {
   props: Props;
 
   render () {
+    const openRowDetail = (r) => {
+      console.log('open row detail called:', r)
+    }
     const { users } = this.props
     if (!users) {
       return (
@@ -20,22 +23,24 @@ export class UsersTable extends Component {
         </Paper>
       )
     }
-    const rows = users.map(user => (
-      <TableRow key={`User-${user.login}`}>
+    const rows = users.map((user, i) => (
+      <TableRow key={`User-${i}`} onRowClick={openRowDetail}>
         <TableRowColumn>{user.login}</TableRowColumn>
         <TableRowColumn>{user.email}</TableRowColumn>
+        <TableRowColumn>{user.public_repos}</TableRowColumn>
       </TableRow>
     ))
     return (
-      <Paper>
-        <Table {...this.props}>
-         <TableHeader>
+      <Paper {...this.props}>
+        <Table>
+         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
            <TableRow>
              <TableHeaderColumn>Username</TableHeaderColumn>
              <TableHeaderColumn>Email</TableHeaderColumn>
+             <TableHeaderColumn>Repos</TableHeaderColumn>
            </TableRow>
          </TableHeader>
-         <TableBody>
+         <TableBody displayRowCheckbox={false} stripedRows={true}>
             {rows}
          </TableBody>
        </Table>
@@ -43,5 +48,8 @@ export class UsersTable extends Component {
     )
   }
 }
-
+function isEven(n) {
+  n = Number(n);
+  return n === 0 || !!(n && !(n%2));
+}
 export default UsersTable

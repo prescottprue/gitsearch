@@ -13,29 +13,33 @@ class Home extends Component {
   }
 
   loadUser = (username) => {
-    console.log('load user called:', username)
+    // console.log('load user called:', username)
     this.props.getUser(username)
   }
 
   render () {
     const { users } = this.props
-    console.log('users:', users)
     return (
       <div className={styles.container}>
-        <h2>Github Search</h2>
-        <div className={styles.tiles}>
+        <div className={styles.search}>
           <SearchTile onSubmit={this.loadUser}/>
         </div>
-        <div className={styles.table}>
-          <UsersTable users={users}/>
-        </div>
+        {
+          users
+          ?
+          (
+            <div className={styles.table}>
+              <UsersTable users={users}/>
+            </div>
+          )
+          : null
+        }
       </div>
     )
   }
 }
 // Place state of redux store into props of component
 const mapStateToProps = (state) => {
-  console.log('state:', state)
   return {
     users: state.users.items,
     account: state.account,
