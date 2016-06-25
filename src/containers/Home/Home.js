@@ -22,14 +22,13 @@ class Home extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.search}>
-          <SearchTile onSubmit={this.loadUser}/>
+          <SearchTile onSubmit={this.loadUser} />
         </div>
         {
           users
-          ?
-          (
+          ? (
             <div className={styles.table}>
-              <UsersTable users={users}/>
+              <UsersTable users={users} />
             </div>
           )
           : null

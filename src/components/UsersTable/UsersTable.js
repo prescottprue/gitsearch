@@ -33,23 +33,18 @@ export class UsersTable extends Component {
     return (
       <Paper {...this.props}>
         <Table>
-         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-           <TableRow>
-             <TableHeaderColumn>Username</TableHeaderColumn>
-             <TableHeaderColumn>Email</TableHeaderColumn>
-             <TableHeaderColumn>Repos</TableHeaderColumn>
-           </TableRow>
-         </TableHeader>
-         <TableBody displayRowCheckbox={false} stripedRows={true}>
-            {rows}
-         </TableBody>
-       </Table>
-     </Paper>
+          <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+            <TableRow>
+              <TableHeaderColumn>Username</TableHeaderColumn>
+              <TableHeaderColumn>Email</TableHeaderColumn>
+              <TableHeaderColumn>Repos</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody displayRowCheckbox={false} stripedRows>{rows}</TableBody>
+        </Table>
+      </Paper>
     )
   }
 }
-function isEven(n) {
-  n = Number(n);
-  return n === 0 || !!(n && !(n%2));
-}
+
 export default UsersTable

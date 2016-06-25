@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './SearchTile.scss'
-import { Paper, TextField, List, RaisedButton } from 'material-ui'
+import { Paper, TextField, RaisedButton } from 'material-ui'
 
 type Props = {
   users: Array,
@@ -10,7 +10,7 @@ type Props = {
 export class SearchTile extends Component {
   props: Props;
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { users: this.props.users || [] }
   }
@@ -24,26 +24,25 @@ export class SearchTile extends Component {
     this.setState({ inputVal: e.target.value })
   }
 
-  handleSubmit = (inputVal) => {
-    this.props.onSubmit.bind(this, inputVal)
+  handleSubmit = () => {
+    this.props.onSubmit(this.state.inputVal)
   }
 
   render () {
-    const { inputVal, users } = this.state
     return (
       <Paper className={styles.paper} zDepth={1}>
         <TextField
-          hintText="prescottprue"
-          floatingLabelText="Enter Github Username(s)"
-          multiLine={true}
+          hintText='prescottprue'
+          floatingLabelText='Enter Github Username(s)'
+          multiLine
           onChange={this.handleUpdate}
           style={{width: '70%'}}
           className={styles.input}
         />
         <RaisedButton
           label='Search'
-          onClick={this.props.onSubmit.bind(this, inputVal)}
-          primary={true}
+          onClick={this.handleSubmit}
+          primary
         />
       </Paper>
     )
