@@ -22,6 +22,7 @@ export function getUser (username) {
   if (!username) {
     throw new Error('Username is required to get user data')
   }
+  // const usersArray = username.split('\n')
   return {
     [CALL_API]: {
       headers: { 'Content-Type': 'application/json' },
@@ -36,8 +37,7 @@ export function getUser (username) {
   }
 }
 
-//
-
+// To use along with normalizr schema
 // {
 //   type: types.GET_REPOS_SUCCESS,
 //   payload: (action, state, res) => {

@@ -1,6 +1,7 @@
 @import '../../variables';
-.App {
+body {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: $background;
 }
 a {
   text-decoration: none;

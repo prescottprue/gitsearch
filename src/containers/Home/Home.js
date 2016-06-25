@@ -3,36 +3,35 @@ import styles from './Home.scss'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Actions from '../../actions'
+import SearchTile from 'components/SearchTile/SearchTile'
+import UsersTable from 'components/UsersTable/UsersTable'
 
 class Home extends Component {
   static propTypes = {
     getUser: PropTypes.func,
     users: PropTypes.array
   }
-  componentDidMount () {
-    this.loadUser('prescottprue')
-  }
 
-  loadUser (username) {
+  loadUser = (username) => {
+    // console.log('load user called:', username)
     this.props.getUser(username)
   }
 
   render () {
     const { users } = this.props
-    console.log('users:', users)
     return (
       <div className={styles.container}>
-        <h2>Welcome to gitsearch</h2>
-        <p>Example search applicaiton </p>
+        <div className={styles.search}>
+          <SearchTile onSubmit={this.loadUser} />
+        </div>
         {
-        users
-        ? (
-          <div>
-            Username: {users[0].login}<br />
-            Email: {users[0].email}
-          </div>
+          users
+          ? (
+            <div className={styles.table}>
+              <UsersTable users={users} />
+            </div>
           )
-        : null
+          : null
         }
       </div>
     )
@@ -40,7 +39,6 @@ class Home extends Component {
 }
 // Place state of redux store into props of component
 const mapStateToProps = (state) => {
-  console.log('state:', state)
   return {
     users: state.users.items,
     account: state.account,
