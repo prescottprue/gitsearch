@@ -9,7 +9,7 @@ import Navbar from 'components/Navbar/Navbar'
 // Styling
 import Theme from 'theme'
 import ThemeManager from 'material-ui/lib/styles/theme-manager'
-import './App.scss'
+import styles from './App.scss'
 
 // Tap Plugin
 import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -37,7 +37,7 @@ class Main extends Component {
 
   render () {
     return (
-      <div className='App'>
+      <div className={styles.app}>
         <Navbar />
         {this.props.children}
       </div>

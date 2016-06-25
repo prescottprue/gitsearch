@@ -3,6 +3,8 @@ import styles from './Home.scss'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Actions from '../../actions'
+import SearchTile from 'components/SearchTile/SearchTile'
+import MultilineTile from 'components/MultilineTile/MultilineTile'
 
 class Home extends Component {
   static propTypes = {
@@ -24,16 +26,10 @@ class Home extends Component {
       <div className={styles.container}>
         <h2>Welcome to gitsearch</h2>
         <p>Example search applicaiton </p>
-        {
-        users
-        ? (
-          <div>
-            Username: {users[0].login}<br />
-            Email: {users[0].email}
-          </div>
-          )
-        : null
-        }
+        <div className={styles.tiles}>
+          <SearchTile />
+          <MultilineTile />
+        </div>
       </div>
     )
   }
