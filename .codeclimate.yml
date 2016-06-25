@@ -1,0 +1,13 @@
+languages:
+  JavaScript: true
+exclude_paths:
+- "test/*"
+- "lib/*"
+- "dist/*"
+- "examples/*"
+- "server/*"
+- "config/*"
+- "blueprints/*"
+- "bin/*"
+- "assets/*"
+- "coverage/*"
