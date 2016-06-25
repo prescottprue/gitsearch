@@ -4,18 +4,16 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Actions from '../../actions'
 import SearchTile from 'components/SearchTile/SearchTile'
-import MultilineTile from 'components/MultilineTile/MultilineTile'
+import UsersTable from 'components/UsersTable/UsersTable'
 
 class Home extends Component {
   static propTypes = {
     getUser: PropTypes.func,
     users: PropTypes.array
   }
-  componentDidMount () {
-    this.loadUser('prescottprue')
-  }
 
-  loadUser (username) {
+  loadUser = (username) => {
+    console.log('load user called:', username)
     this.props.getUser(username)
   }
 
@@ -24,11 +22,12 @@ class Home extends Component {
     console.log('users:', users)
     return (
       <div className={styles.container}>
-        <h2>Welcome to gitsearch</h2>
-        <p>Example search applicaiton </p>
+        <h2>Github Search</h2>
         <div className={styles.tiles}>
-          <SearchTile />
-          <MultilineTile />
+          <SearchTile onSubmit={this.loadUser}/>
+        </div>
+        <div className={styles.table}>
+          <UsersTable users={users}/>
         </div>
       </div>
     )

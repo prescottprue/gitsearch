@@ -1,30 +1,43 @@
 import React, { Component } from 'react'
 import styles from './SearchTile.scss'
-import { Paper, AutoComplete, List } from 'material-ui'
+import { Paper, TextField, List, FlatButton } from 'material-ui'
 
 type Props = {
-
+  users: Array,
+  onUpdateInput: Function,
+  onSubmit: Function
 };
 export class SearchTile extends Component {
   props: Props;
 
-  state = { dataSource: [] }
+  constructor(props) {
+    super(props)
+    this.state = { users: this.props.users || [] }
+  }
 
-  handleUpdateInput = (t) => {
-    this.setState({
-      dataSource: [t, t + t, t + t + t]
-    })
+  componentWillReceiveProps (nextProps) {
+    const { users } = nextProps
+    if (users) this.setState({ users })
+  }
+
+  handleUpdate = (e) => {
+    console.log('inputval:', e.target.value)
+    this.setState({ inputVal: e.target.value })
   }
 
   render () {
+    const { inputVal, users } = this.state
     return (
       <Paper className={styles.paper} zDepth={1}>
         <div>
-          <AutoComplete
-          hintText="Search to Add User"
-          dataSource={this.state.dataSource}
-          onUpdateInput={this.handleUpdateInput}
+          <TextField
+            hintText="prescottprue"
+            floatingLabelText="Enter Github username's"
+            multiLine={true}
+            onChange={this.handleUpdate}
+            onEnterKeyDown={this.props.onSubmit.bind(this, inputVal)}
           />
+          <FlatButton label='Search' onClick={this.props.onSubmit.bind(this, inputVal)}/>
         </div>
       </Paper>
     )
