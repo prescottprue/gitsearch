@@ -1,5 +1,6 @@
 import { CALL_API } from 'redux-api-middleware'
 import * as types from 'constants/ActionTypes'
+import { trim } from 'lodash'
 
 const API_ROOT = 'https://api.github.com'
 
@@ -18,17 +19,14 @@ export function getRepos (account) {
   }
 }
 export function getUsers (list) {
-  console.log('users list:', list)
-  const lineSplit = list.split('\n')
-  //TODO: Handle commas
-  // const commaSplit = list.split(',')
-  return (dispatch) => lineSplit.forEach(name => dispatch(getUser(name)))
+  // Handle lists that are seperated by lines, commas, or both
+  const usersList = list.replace(/(?:\n+)/g, ',').split(',').map(name => trim(name))
+  return (dispatch) => usersList.forEach(name => dispatch(getUser(name)))
 }
 export function getUser (username) {
   if (!username) {
     throw new Error('Username is required to get user data')
   }
-  // const usersArray = username.split('\n')
   return {
     [CALL_API]: {
       headers: { 'Content-Type': 'application/json' },

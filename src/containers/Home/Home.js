@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import styles from './Home.scss'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -6,14 +6,14 @@ import * as Actions from '../../actions'
 import SearchTile from 'components/SearchTile/SearchTile'
 import UsersTable from 'components/UsersTable/UsersTable'
 
+type Props = {
+  getUsers: Function,
+  users: Array
+};
 class Home extends Component {
-  static propTypes = {
-    getUser: PropTypes.func,
-    users: PropTypes.array
-  }
+  props: Props;
 
   loadUser = (username) => {
-    // console.log('load user called:', username)
     this.props.getUsers(username)
   }
 
