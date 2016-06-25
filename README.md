@@ -2,6 +2,8 @@
 
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
+[![Code Climate][climate-image]][climate-url]
+[![Code Coverage][coverage-image]][coverage-url]
 [![License][license-image]][license-url]
 [![Code Style][code-style-image]][code-style-url]
 
@@ -93,14 +95,6 @@ The application structure presented in this boilerplate is **fractal**, where fu
 
 #### Developer Tools
 
-### Routing
-Uses `react-router` [route definitions](https://github.com/reactjs/react-router/blob/master/docs/API.md#plainroute) (`<route>/index.js`) to define units of logic within our application. See the [application structure](#application-structure) section for more information.
-
-## Testing
-To add a unit test, simply create a `.spec.js` file anywhere in `~/tests`. Karma will pick up on these files automatically, and Mocha and Chai will be available within your test without the need to import them. If you are using `redux-cli`, test files should automatically be generated when you create a component or redux module.
-
-Coverage reports will be compiled to `~/coverage` by default. If you wish to change what reporters are used and where reports are compiled, you can do so by modifying `coverage_reporters` in `~/config/index.js`.
-
 ### Root Resolve
 Webpack is configured to make use of [resolve.root](http://webpack.github.io/docs/configuration.html#resolve-root), which lets you import local packages as if you were traversing from the root of your `~/src` directory. Here's an example:
 
@@ -123,6 +117,10 @@ Both `.scss` and `.css` file extensions are supported out of the box and are con
 [travis-url]: https://travis-ci.org/prescottprue/gitsearch
 [daviddm-image]: https://img.shields.io/david/prescottprue/gitsearch.svg?style=flat-square
 [daviddm-url]: https://david-dm.org/prescottprue/gitsearch
+[climate-image]: https://img.shields.io/codeclimate/github/prescottprue/gitsearch.svg?style=flat-square
+[climate-url]: https://codeclimate.com/github/prescottprue/gitsearch
+[coverage-image]: https://img.shields.io/codeclimate/coverage/github/prescottprue/gitsearch.svg?style=flat-square
+[coverage-url]: https://codeclimate.com/github/prescottprue/gitsearch
 [license-image]: https://img.shields.io/npm/l/gitsearch.svg?style=flat-square
 [license-url]: https://github.com/prescottprue/gitsearch/blob/master/LICENSE
 [code-style-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square

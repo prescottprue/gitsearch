@@ -25,7 +25,9 @@ export class SearchTile extends Component {
   }
 
   handleSubmit = () => {
-    this.props.onSubmit(this.state.inputVal)
+    const val = this.state.inputVal
+    this.setState({ inputVal: '' })
+    this.props.onSubmit(val)
   }
 
   render () {
@@ -38,6 +40,7 @@ export class SearchTile extends Component {
           onChange={this.handleUpdate}
           style={{width: '70%'}}
           className={styles.input}
+          value={this.state.inputVal}
         />
         <RaisedButton
           label='Search'
