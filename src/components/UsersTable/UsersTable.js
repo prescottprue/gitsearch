@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import styles from './UsersTable.scss'
 import {
   Paper, Table, TableHeader, TableRow, TableBody,
-  TableHeaderColumn, TableRowColumn
+  TableHeaderColumn, TableRowColumn, IconButton
 } from 'material-ui'
+import DeleteIcon from 'react-material-icons/icons/action/delete'
 
 type Props = {
-  users: Array
+  users: Array,
+  onDeleteClick: Function
 };
 export class UsersTable extends Component {
   props: Props;
@@ -14,6 +16,9 @@ export class UsersTable extends Component {
   render () {
     const openRowDetail = (r) => {
       console.log('open row detail called:', r)
+    }
+    const handleDeleteClick = (user) => {
+      this.props.onDeleteClick(user)
     }
     const { users } = this.props
     if (!users) {
@@ -25,9 +30,12 @@ export class UsersTable extends Component {
     }
     const rows = users.map((user, i) => (
       <TableRow key={`User-${i}`} onRowClick={openRowDetail}>
-        <TableRowColumn>{user.login}</TableRowColumn>
-        <TableRowColumn>{user.email}</TableRowColumn>
-        <TableRowColumn>{user.public_repos}</TableRowColumn>
+        <TableRowColumn key={`User-${i}-Username`}>{user.login}</TableRowColumn>
+        <TableRowColumn key={`User-${i}-Email`}>{user.email}</TableRowColumn>
+        <TableRowColumn key={`User-${i}-Repos`} className={styles.hiddenMobile}>{user.public_repos}</TableRowColumn>
+        <TableRowColumn key={`User-${i}-Username-Delete`} className={styles.hiddenMobile} onClick={handleDeleteClick}>
+          <IconButton><DeleteIcon /></IconButton>
+        </TableRowColumn>
       </TableRow>
     ))
     return (
@@ -37,7 +45,8 @@ export class UsersTable extends Component {
             <TableRow>
               <TableHeaderColumn>Username</TableHeaderColumn>
               <TableHeaderColumn>Email</TableHeaderColumn>
-              <TableHeaderColumn>Repos</TableHeaderColumn>
+              <TableHeaderColumn className={styles.hiddenMobile}>Public Repos</TableHeaderColumn>
+              <TableHeaderColumn className={styles.hiddenMobile}>Remove</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false} stripedRows>{rows}</TableBody>

@@ -26,7 +26,7 @@ export class SearchTile extends Component {
 
   handleSubmit = () => {
     const val = this.state.inputVal
-    this.setState({ inputVal: '' })
+    this.setState({ inputVal: '' }) // empty input
     this.props.onSubmit(val)
   }
 
@@ -38,7 +38,6 @@ export class SearchTile extends Component {
           floatingLabelText='Enter Github Username(s)'
           multiLine
           onChange={this.handleUpdate}
-          style={{width: '70%'}}
           className={styles.input}
           value={this.state.inputVal}
         />
