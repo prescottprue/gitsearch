@@ -14,7 +14,7 @@ export default {
     accent1Color: Colors.blue600,
     accent2Color: Colors.blue700,
     accent3Color: Colors.blue500,
-    textColor: Colors.grey900,
+    textColor: Colors.grey700,
     alternateTextColor: Colors.white,
     canvasColor: Colors.white,
     borderColor: Colors.grey400,

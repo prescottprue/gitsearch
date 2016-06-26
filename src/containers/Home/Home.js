@@ -6,11 +6,11 @@ import * as Actions from '../../actions'
 import { CircularProgress } from 'material-ui'
 import SearchTile from 'components/SearchTile/SearchTile'
 import UsersTable from 'components/UsersTable/UsersTable'
-
 type Props = {
-  getUsers: Function,
   users: Array,
-  isFetching: Boolean
+  isFetching: Boolean,
+  getUsers: Function,
+  removeUser: Function
 };
 class Home extends Component {
   props: Props;
@@ -20,22 +20,22 @@ class Home extends Component {
   }
 
   render () {
-    const { users, isFetching } = this.props
+    const { users, isFetching, removeUser } = this.props
     return (
       <div className={styles.container}>
         <div className={styles.search}>
-          <SearchTile onSubmit={this.loadUser} />
+          <SearchTile onSubmit={this.loadUser} users={users} />
         </div>
         {
-          isFetching
+          (isFetching && (!users || users.length < 1))
           ? <CircularProgress size={1.5} className={styles.progress} />
           : null
         }
         {
-          users
+          (users && users.length >= 1)
           ? (
             <div className={styles.table}>
-              <UsersTable users={users} />
+              <UsersTable users={users} onDeleteClick={removeUser} />
             </div>
           )
           : null
@@ -45,11 +45,14 @@ class Home extends Component {
   }
 }
 // Place state of redux store into props of component
-const mapStateToProps = ({ users, router }) => ({
-  isFetching: users.isFetching,
-  users: users.items,
-  router: router
-})
+const mapStateToProps = ({ selectedUsers, router, entities }) => {
+  const { items, isFetching } = selectedUsers
+  return {
+    isFetching,
+    users: items ? items.map(username => entities.users[username]) : null,
+    router
+  }
+}
 
 // Place action methods into props
 const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch)

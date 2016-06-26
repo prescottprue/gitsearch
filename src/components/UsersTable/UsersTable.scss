@@ -5,7 +5,19 @@
   justify-content: center;
   padding: 2rem;
 }
-
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.hiddenMobile {
+  text-align: center;
+}
 @media screen and (max-width: 700px) {
   .hiddenMobile {
     display: none;

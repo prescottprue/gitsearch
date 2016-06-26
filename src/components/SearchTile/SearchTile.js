@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styles from './SearchTile.scss'
 import { Paper, TextField, RaisedButton } from 'material-ui'
+import { stringToList } from '../../utils'
+import { find } from 'lodash'
 
 type Props = {
   users: Array,
@@ -12,34 +14,39 @@ export class SearchTile extends Component {
 
   constructor (props) {
     super(props)
-    this.state = { users: this.props.users || [] }
+    this.state = { users: this.props.users || [], errorMessage: null }
   }
 
-  componentWillReceiveProps (nextProps) {
-    const { users } = nextProps
+  componentWillReceiveProps ({users}) {
     if (users) this.setState({ users })
   }
 
-  handleUpdate = (e) => {
-    this.setState({ inputVal: e.target.value })
+  handleUpdate = ({target}) => {
+    this.setState({ inputVal: target.value })
   }
 
   handleSubmit = () => {
-    const val = this.state.inputVal
+    const { inputVal } = this.state
+    const inputList = stringToList(inputVal)
+    const matching = find(inputList, (input) => find(this.props.users || [], { login: input }))
+    if (matching) return this.setState({ errorMessage: `${matching} already exists` })
+    if (!inputVal) return this.setState({ errorMessage: 'Username(s) required' }) // handle no input
     this.setState({ inputVal: '' }) // empty input
-    this.props.onSubmit(val)
+    this.props.onSubmit(inputVal)
   }
 
   render () {
+    const { errorMessage, inputVal } = this.state
     return (
       <Paper className={styles.paper} zDepth={1}>
         <TextField
-          hintText='prescottprue'
-          floatingLabelText='Enter Github Username(s)'
+          hintText='someuser'
+          floatingLabelText='Enter Username(s)'
           multiLine
           onChange={this.handleUpdate}
           className={styles.input}
-          value={this.state.inputVal}
+          value={inputVal}
+          errorText={errorMessage}
         />
         <RaisedButton
           label='Search'
