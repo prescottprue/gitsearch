@@ -16,7 +16,7 @@ class Home extends Component {
   props: Props;
 
   loadUser = (username) => {
-    this.props.getUsers(username)
+    this.props.loadUser(username)
   }
 
   render () {
