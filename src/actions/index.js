@@ -2,7 +2,6 @@ import { CALL_API } from 'redux-api-middleware'
 import * as types from 'constants/ActionTypes'
 import { normalize } from 'normalizr'
 import { userSchema } from 'constants/Schema'
-import { trim } from 'lodash'
 import { stringToList } from '../utils'
 
 const API_ROOT = 'https://api.github.com'

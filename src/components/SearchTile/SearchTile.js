@@ -29,7 +29,7 @@ export class SearchTile extends Component {
     const { inputVal } = this.state
     const inputList = stringToList(inputVal)
     const matching = find(inputList, (input) => find(this.props.users || [], { login: input }))
-    if (matching) return this.setState({ errorMessage: `${matching} already exists`})
+    if (matching) return this.setState({ errorMessage: `${matching} already exists` })
     if (!inputVal) return this.setState({ errorMessage: 'Username(s) required' }) // handle no input
     this.setState({ inputVal: '' }) // empty input
     this.props.onSubmit(inputVal)
