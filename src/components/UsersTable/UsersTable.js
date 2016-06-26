@@ -17,9 +17,7 @@ export class UsersTable extends Component {
     const openRowDetail = (r) => {
       console.log('open row detail called:', r)
     }
-    const handleDeleteClick = (user) => {
-      this.props.onDeleteClick(user)
-    }
+
     const { users } = this.props
     if (!users) {
       return (
@@ -29,16 +27,23 @@ export class UsersTable extends Component {
       )
     }
     console.log('users before map:', users)
-    const rows = users.map((user, i) => (
-      <TableRow key={`User-${i}`} onRowClick={openRowDetail}>
-        <TableRowColumn key={`User-${i}-Username`}>{user.login}</TableRowColumn>
-        <TableRowColumn key={`User-${i}-Email`}>{user.email}</TableRowColumn>
-        <TableRowColumn key={`User-${i}-Repos`} className={styles.hiddenMobile}>{user.public_repos}</TableRowColumn>
-        <TableRowColumn key={`User-${i}-Username-Delete`} className={styles.hiddenMobile} onClick={handleDeleteClick}>
-          <IconButton><DeleteIcon /></IconButton>
-        </TableRowColumn>
-      </TableRow>
-    ))
+    const rows = users.map((user, i) => {
+      const handleDeleteClick = (e) => {
+        e.preventDefault()
+        console.log('handle delete called:', user)
+        this.props.onDeleteClick(user.login)
+      }
+      return (
+        <TableRow key={`User-${i}`} onRowClick={openRowDetail}>
+          <TableRowColumn key={`User-${i}-Username`}>{user.login}</TableRowColumn>
+          <TableRowColumn key={`User-${i}-Email`}>{user.email}</TableRowColumn>
+          <TableRowColumn key={`User-${i}-Repos`} className={`${styles.hiddenMobile}`}>{user.public_repos}</TableRowColumn>
+          <TableRowColumn key={`User-${i}-Username-Delete`} className={styles.hiddenMobile} >
+            <IconButton onClick={handleDeleteClick}><DeleteIcon /></IconButton>
+          </TableRowColumn>
+        </TableRow>
+      )
+    })
     return (
       <Paper {...this.props}>
         <Table>

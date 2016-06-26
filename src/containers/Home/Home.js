@@ -20,7 +20,7 @@ class Home extends Component {
   }
 
   render () {
-    const { users, isFetching } = this.props
+    const { users, isFetching, removeUser } = this.props
     return (
       <div className={styles.container}>
         <div className={styles.search}>
@@ -32,10 +32,10 @@ class Home extends Component {
           : null
         }
         {
-          users && users.length >= 1 
+          users && users.length >= 1
           ? (
             <div className={styles.table}>
-              <UsersTable users={users} />
+              <UsersTable users={users} onDeleteClick={removeUser}/>
             </div>
           )
           : null

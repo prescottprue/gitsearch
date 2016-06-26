@@ -52,5 +52,13 @@ export function getUser (username) {
     }
   }
 }
-
+export function removeUser (username) {
+  if (!username) {
+    throw new Error('Username is required to remove data')
+  }
+  return {
+    type: types.REMOVE_USER,
+    payload: username
+  }
+}
 // To use along with normalizr schema
