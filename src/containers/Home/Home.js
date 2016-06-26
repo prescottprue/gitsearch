@@ -8,9 +8,10 @@ import SearchTile from 'components/SearchTile/SearchTile'
 import UsersTable from 'components/UsersTable/UsersTable'
 
 type Props = {
-  getUsers: Function,
   users: Array,
-  isFetching: Boolean
+  isFetching: Boolean,
+  getUsers: Function,
+  removeUser: Function
 };
 class Home extends Component {
   props: Props;
@@ -35,7 +36,7 @@ class Home extends Component {
           users && users.length >= 1
           ? (
             <div className={styles.table}>
-              <UsersTable users={users} onDeleteClick={removeUser}/>
+              <UsersTable users={users} onDeleteClick={removeUser} />
             </div>
           )
           : null

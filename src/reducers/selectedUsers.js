@@ -8,7 +8,6 @@ export default function selectedUsers (state = {
   isFetching: false,
   items: []
 }, action) {
-  console.log('selected user action:', action)
   switch (action.type) {
     case GET_USER_REQUEST:
       return Object.assign({}, state, {

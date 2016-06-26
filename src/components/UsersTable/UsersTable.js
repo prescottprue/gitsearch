@@ -26,20 +26,27 @@ export class UsersTable extends Component {
         </Paper>
       )
     }
-    console.log('users before map:', users)
     const rows = users.map((user, i) => {
       const handleDeleteClick = (e) => {
-        e.preventDefault()
-        console.log('handle delete called:', user)
         this.props.onDeleteClick(user.login)
       }
       return (
         <TableRow key={`User-${i}`} onRowClick={openRowDetail}>
-          <TableRowColumn key={`User-${i}-Username`}>{user.login}</TableRowColumn>
-          <TableRowColumn key={`User-${i}-Email`}>{user.email}</TableRowColumn>
-          <TableRowColumn key={`User-${i}-Repos`} className={`${styles.hiddenMobile}`}>{user.public_repos}</TableRowColumn>
+          <TableRowColumn key={`User-${i}-Username`}>
+            <div className={styles.row}>{user.login}</div>
+          </TableRowColumn>
+          <TableRowColumn key={`User-${i}-Email`}>
+            <div className={styles.row}>{user.email}</div>
+          </TableRowColumn>
+          <TableRowColumn key={`User-${i}-Repos`} className={`${styles.hiddenMobile}`}>
+            <div className={styles.row}>{user.public_repos}</div>
+          </TableRowColumn>
           <TableRowColumn key={`User-${i}-Username-Delete`} className={styles.hiddenMobile} >
-            <IconButton onClick={handleDeleteClick}><DeleteIcon /></IconButton>
+            <div className={styles.row}>
+              <IconButton onClick={handleDeleteClick}>
+                <DeleteIcon />
+              </IconButton>
+            </div>
           </TableRowColumn>
         </TableRow>
       )
@@ -49,10 +56,16 @@ export class UsersTable extends Component {
         <Table>
           <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
             <TableRow>
-              <TableHeaderColumn>Username</TableHeaderColumn>
-              <TableHeaderColumn>Email</TableHeaderColumn>
-              <TableHeaderColumn className={styles.hiddenMobile}>Public Repos</TableHeaderColumn>
-              <TableHeaderColumn className={styles.hiddenMobile}>Remove</TableHeaderColumn>
+              <TableHeaderColumn><div className={styles.row}>Username</div></TableHeaderColumn>
+              <TableHeaderColumn>
+                <div className={styles.row}>Email</div>
+              </TableHeaderColumn>
+              <TableHeaderColumn className={styles.hiddenMobile}>
+                <div className={styles.row}>Public Repos</div>
+              </TableHeaderColumn>
+              <TableHeaderColumn className={styles.hiddenMobile}>
+                <div className={styles.row}>Remove</div>
+              </TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false} stripedRows>{rows}</TableBody>

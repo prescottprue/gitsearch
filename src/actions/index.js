@@ -1,7 +1,6 @@
 import { CALL_API } from 'redux-api-middleware'
 import * as types from 'constants/ActionTypes'
 import { normalize } from 'normalizr'
-import { camelizeKeys } from 'humps'
 import { userSchema } from 'constants/Schema'
 import { trim } from 'lodash'
 
@@ -41,11 +40,7 @@ export function getUser (username) {
           type: types.GET_USER_SUCCESS,
           payload: (action, state, res) =>
             res.json()
-              .then((json) => {
-                console.log('json:', json)
-                const camelizedJson = camelizeKeys(json)
-                return normalize(json, userSchema)
-              })
+               .then((json) => normalize(json, userSchema))
         },
         types.GET_USER_FAILURE
       ]
@@ -61,4 +56,3 @@ export function removeUser (username) {
     payload: username
   }
 }
-// To use along with normalizr schema

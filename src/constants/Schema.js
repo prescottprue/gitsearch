@@ -1,4 +1,4 @@
-import { Schema, arrayOf, normalize } from 'normalizr'
+import { Schema, arrayOf } from 'normalizr'
 
 export const userSchema = new Schema('users', {
   idAttribute: user => user.login.toLowerCase()
