@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styles from './SearchTile.scss'
 import { Paper, TextField, RaisedButton } from 'material-ui'
+import { stringToList } from '../../utils'
+import { find } from 'lodash'
 
 type Props = {
   users: Array,
@@ -25,6 +27,9 @@ export class SearchTile extends Component {
 
   handleSubmit = () => {
     const { inputVal } = this.state
+    const inputList = stringToList(inputVal)
+    const matching = find(inputList, (input) => find(this.props.users || [], { login: input }))
+    if (matching) return this.setState({ errorMessage: `${matching} already exists`})
     if (!inputVal) return this.setState({ errorMessage: 'Username(s) required' }) // handle no input
     this.setState({ inputVal: '' }) // empty input
     this.props.onSubmit(inputVal)

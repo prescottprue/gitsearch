@@ -3,6 +3,7 @@ import * as types from 'constants/ActionTypes'
 import { normalize } from 'normalizr'
 import { userSchema } from 'constants/Schema'
 import { trim } from 'lodash'
+import { stringToList } from '../utils'
 
 const API_ROOT = 'https://api.github.com'
 
@@ -20,10 +21,9 @@ export function getRepos (account) {
     }
   }
 }
-export function getUsers (list) {
+export function getUsers (str) {
   // Handle lists that are seperated by lines, commas, or both
-  const usersList = list.replace(/(?:\n+)/g, ',').split(',').map(name => trim(name))
-  return (dispatch) => usersList.forEach(name => dispatch(getUser(name)))
+  return (dispatch) => stringToList(str).forEach(name => dispatch(getUser(name)))
 }
 export function getUser (username) {
   if (!username) {

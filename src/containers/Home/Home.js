@@ -6,7 +6,7 @@ import * as Actions from '../../actions'
 import { CircularProgress } from 'material-ui'
 import SearchTile from 'components/SearchTile/SearchTile'
 import UsersTable from 'components/UsersTable/UsersTable'
-
+import { find } from 'lodash'
 type Props = {
   users: Array,
   isFetching: Boolean,
@@ -25,7 +25,7 @@ class Home extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.search}>
-          <SearchTile onSubmit={this.loadUser} />
+          <SearchTile onSubmit={this.loadUser} users={users} />
         </div>
         {
           isFetching
