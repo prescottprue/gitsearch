@@ -4,11 +4,10 @@ import rootReducer from '../reducers'
 // import createHistory from 'history/lib/createBrowserHistory'
 // import {reduxReactFirebase} from 'redux-react-firebase'
 import thunkMiddleware from 'redux-thunk'
-// import { apiMiddleware } from 'redux-api-middleware'
-import apiMiddleware from '../middleware/api'
+import { apiMiddleware } from 'redux-api-middleware'
 
 const createStoreWithMiddleware = compose(
-  applyMiddleware(thunkMiddleware, apiMiddleware)
+  applyMiddleware(thunkMiddleware, apiMiddleware),
   typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
 )(createStore)
 

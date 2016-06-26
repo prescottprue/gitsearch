@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import { routeReducer } from 'react-router-redux'
-import users from './users'
 import repos from './repos'
+import selectedUsers from './selectedUsers'
 
 const rootReducer = combineReducers({
   entities,
-  users,
+  selectedUsers,
   repos,
   router: routeReducer
 })
@@ -13,11 +13,9 @@ const rootReducer = combineReducers({
 export default rootReducer
 
 // Updates an entity cache in response to any action with response.entities.
-function entities(state = { users: {}, repos: {} }, action) {
-  console.log('action:', action.response)
-  if (action.response && action.response.entities) {
-    return merge({}, state, action.response.entities)
+function entities (state = { selectedUsers: {}, users: {}, repos: {} }, action) {
+  if (action.payload && action.payload.entities) {
+    return Object.assign({}, state, action.payload.entities)
   }
-
   return state
 }

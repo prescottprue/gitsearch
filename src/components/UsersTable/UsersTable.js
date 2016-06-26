@@ -28,6 +28,7 @@ export class UsersTable extends Component {
         </Paper>
       )
     }
+    console.log('users before map:', users)
     const rows = users.map((user, i) => (
       <TableRow key={`User-${i}`} onRowClick={openRowDetail}>
         <TableRowColumn key={`User-${i}-Username`}>{user.login}</TableRowColumn>

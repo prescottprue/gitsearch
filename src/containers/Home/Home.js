@@ -16,7 +16,7 @@ class Home extends Component {
   props: Props;
 
   loadUser = (username) => {
-    this.props.loadUser(username)
+    this.props.getUsers(username)
   }
 
   render () {
@@ -32,7 +32,7 @@ class Home extends Component {
           : null
         }
         {
-          users
+          users && users.length >= 1 
           ? (
             <div className={styles.table}>
               <UsersTable users={users} />
@@ -45,11 +45,14 @@ class Home extends Component {
   }
 }
 // Place state of redux store into props of component
-const mapStateToProps = ({ users, router }) => ({
-  isFetching: users.isFetching,
-  users: users.items,
-  router: router
-})
+const mapStateToProps = ({ selectedUsers, router, entities }) => {
+  const { items, isFetching } = selectedUsers
+  return {
+    isFetching,
+    users: items ? items.map(username => entities.users[username]) : null,
+    router
+  }
+}
 
 // Place action methods into props
 const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch)
