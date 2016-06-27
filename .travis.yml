@@ -20,9 +20,6 @@ install:
 cache:
   directories:
     - node_modules
-addons:
-  code_climate:
-    repo_token: $CODECLIMATE_REPO_TOKEN
 
 deploy:
   skip_cleanup: true
@@ -32,5 +29,4 @@ deploy:
   app: $HEROKU_APP
 
 after_success:
-  - npm install -g codeclimate-test-reporter
-  - codeclimate-test-reporter < coverage/lcov.info
+  - bash <(curl -s https://codecov.io/bash)
