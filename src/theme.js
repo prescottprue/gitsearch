@@ -1,24 +1,26 @@
-import Colors from 'material-ui/lib/styles/colors'
-import ColorManipulator from 'material-ui/lib/utils/color-manipulator'
-import Spacing from 'material-ui/lib/styles/spacing'
-import zIndex from 'material-ui/lib/styles/zIndex'
-
+import {
+  pinkA200,
+  grey100, grey600, grey400, grey700,
+  blue600, blue500, blue700,
+  white, darkBlack
+} from 'material-ui/styles/colors'
+import {fade} from 'material-ui/utils/colorManipulator'
+import spacing from 'material-ui/styles/spacing'
 export default {
-  spacing: Spacing,
-  zIndex: zIndex,
+  spacing: spacing,
   fontFamily: 'Roboto, sans-serif',
   palette: {
-    primary1Color: Colors.grey600,
-    primary2Color: Colors.grey600,
-    primary3Color: Colors.grey100,
-    accent1Color: Colors.blue600,
-    accent2Color: Colors.blue700,
-    accent3Color: Colors.blue500,
-    textColor: Colors.grey700,
-    alternateTextColor: Colors.white,
-    canvasColor: Colors.white,
-    borderColor: Colors.grey400,
-    disabledColor: ColorManipulator.fade(Colors.darkBlack, 0.3),
-    pickerHeaderColor: Colors.pinkA200
+    primary1Color: grey600,
+    primary2Color: grey600,
+    primary3Color: grey100,
+    accent1Color: blue600,
+    accent2Color: blue700,
+    accent3Color: blue500,
+    textColor: grey700,
+    alternateTextColor: white,
+    canvasColor: white,
+    borderColor: grey400,
+    disabledColor: fade(darkBlack, 0.3),
+    pickerHeaderColor: pinkA200
   }
 }

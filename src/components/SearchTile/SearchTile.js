@@ -51,7 +51,7 @@ export class SearchTile extends Component {
         <RaisedButton
           label='Search'
           onClick={this.handleSubmit}
-          primary
+          secondary
         />
       </Paper>
     )

@@ -9,21 +9,6 @@
 
 > Basic Github search app
 
-## Libraries
-* [react](https://github.com/facebook/react)
-* [redux](https://github.com/rackt/redux)
-* [react-router](https://github.com/rackt/react-router)
-* [react-router-redux](https://github.com/rackt/react-router-redux)
-* [webpack](https://github.com/webpack/webpack)
-* [babel](https://github.com/babel/babel)
-* [koa](https://github.com/koajs/koa)
-* [karma](https://github.com/karma-runner/karma)
-* [eslint](http://eslint.org)
-
-## Requirements
-* node `^4.2.0`
-* npm `^3.0.0`
-
 ## Getting Started
 
 After confirming that your development environment meets the specified [requirements](#requirements), you can follow these steps to get the project up and running:
@@ -39,21 +24,17 @@ If everything works, you should see the following:
 
 <img src="http://i.imgur.com/zR7VRG6.png?2" />
 
-While developing, you will probably rely mostly on `npm start`; however, there are additional scripts at your disposal:
+#### Other NPM Scripts
 
 |`npm run <script>`|Description|
 |------------------|-----------|
 |`start`|Serves your app at `localhost:3000`. HMR will be enabled in development.|
-|`compile`|Compiles the application to disk (`~/dist` by default).|
 |`dev`|Same as `npm start`, but enables nodemon for the server as well.|
-|`dev:no-debug`|Same as `npm run dev` but disables devtool instrumentation.|
 |`test`|Runs unit tests with Karma and generates a coverage report.|
 |`test:dev`|Runs Karma and watches for changes to re-run tests; does not generate coverage reports.|
 |`deploy`|Runs linter, tests, and then, on success, compiles your application to disk.|
-|`deploy:dev`|Same as `deploy` but overrides `NODE_ENV` to "development".|
-|`deploy:prod`|Same as `deploy` but overrides `NODE_ENV` to "production".|
 |`lint`|Lint all `.js` files.|
-|`lint:fix`|Lint and fix all `.js` files. [Read more on this](http://eslint.org/docs/user-guide/command-line-interface.html#fix).|
+|`lint:fix`|Lint and fix all `.js` files.|
 
 ## Application Structure
 
@@ -71,23 +52,11 @@ The application structure presented in this boilerplate is **fractal**, where fu
 ├── src                      # Application source code
 │   ├── main.js              # Application bootstrap and rendering
 │   ├── components           # Reusable Presentational Components
-│   ├── containers           # Reusable Container Components
-│   ├── layouts              # Components that dictate major page structure
+│   ├── containers           # Redux connected "smart" components
 │   ├── static               # Static assets (not imported anywhere in source code)
-│   ├── styles               # Application-wide styles (generally settings)
 │   ├── store                # Redux-specific pieces
 │   │   ├── createStore.js   # Create and instrument redux store
 │   │   └── reducers.js      # Reducer registry and injection
-│   └── routes               # Main route definitions and async split points
-│       ├── index.js         # Bootstrap main application routes with store
-│       ├── Root.js          # Wrapper component for context-aware providers
-│       └── Home             # Fractal route
-│           ├── index.js     # Route definitions and async split points
-│           ├── assets       # Assets required to render components
-│           ├── components   # Presentational React Components
-│           ├── container    # Connect components to actions and store
-│           ├── modules      # Collections of reducers/constants/actions
-│           └── routes **    # Fractal sub-routes (** optional)
 └── tests                    # Unit tests
 ```
 
@@ -119,8 +88,8 @@ Both `.scss` and `.css` file extensions are supported out of the box and are con
 [daviddm-url]: https://david-dm.org/prescottprue/gitsearch
 [climate-image]: https://img.shields.io/codeclimate/github/prescottprue/gitsearch.svg?style=flat-square
 [climate-url]: https://codeclimate.com/github/prescottprue/gitsearch
-[coverage-image]: https://img.shields.io/codeclimate/coverage/github/prescottprue/gitsearch.svg?style=flat-square
-[coverage-url]: https://codeclimate.com/github/prescottprue/gitsearch
+[coverage-image]: https://img.shields.io/codecov/c/github/prescottprue/gitsearch.svg?style=flat-square
+[coverage-url]: https://codecov.io/gh/prescottprue/gitsearch
 [license-image]: https://img.shields.io/npm/l/gitsearch.svg?style=flat-square
 [license-url]: https://github.com/prescottprue/gitsearch/blob/master/LICENSE
 [code-style-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
