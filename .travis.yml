@@ -17,6 +17,10 @@ cache:
   directories:
     - node_modules
 
+addons:
+  code_climate:
+    repo_token: $CODECLIMATE_REPO_TOKEN
+
 deploy:
   skip_cleanup: true
   provider: heroku
@@ -26,3 +30,5 @@ deploy:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - npm install -g codeclimate-test-reporter
+  - codeclimate-test-reporter < coverage/*/lcov.info
