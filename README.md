@@ -119,8 +119,11 @@ Both `.scss` and `.css` file extensions are supported out of the box and are con
 [daviddm-url]: https://david-dm.org/prescottprue/gitsearch
 [climate-image]: https://img.shields.io/codeclimate/github/prescottprue/gitsearch.svg?style=flat-square
 [climate-url]: https://codeclimate.com/github/prescottprue/gitsearch
-[coverage-image]: https://img.shields.io/codeclimate/coverage/github/prescottprue/gitsearch.svg?style=flat-square
-[coverage-url]: https://codeclimate.com/github/prescottprue/gitsearch
+[![codecov]()](https://codecov.io/gh/prescottprue/gitsearch)
+// [coverage-image]: https://img.shields.io/codeclimate/coverage/github/prescottprue/gitsearch.svg?style=flat-square
+[coverage-image]: https://img.shields.io/codecov/c/github/prescottprue/gitsearch.svg?style=flat-square
+// [coverage-url]: https://codeclimate.com/github/prescottprue/gitsearch
+[coverage-url]: https://codecov.io/gh/prescottprue/gitsearch
 [license-image]: https://img.shields.io/npm/l/gitsearch.svg?style=flat-square
 [license-url]: https://github.com/prescottprue/gitsearch/blob/master/LICENSE
 [code-style-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
