@@ -1,0 +1,21 @@
+languages:
+  JavaScript: true
+exclude_paths:
+- "test/*"
+- "lib/*"
+- "dist/*"
+- "examples/*"
+- "server/*"
+- "config/*"
+- "blueprints/*"
+- "bin/*"
+- "assets/*"
+- "coverage/*"
+
+engines:
+  duplication:
+    enabled: true
+    exclude_fingerprints:
+    - a0d72f5b03cd4a0513b48023514b7ae7
+    - e5e2eaf1f4d61486fc58c6981803d773
+    - c820ea718300a9058312b4b73897c79f
